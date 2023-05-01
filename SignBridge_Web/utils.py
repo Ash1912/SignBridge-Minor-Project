@@ -9,6 +9,7 @@ from mediapipe_utils import *
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM, Dense
 from tensorflow.keras.callbacks import TensorBoard
+import threading
 
 mp_holistic = mp.solutions.holistic # Holistic model
 mp_drawing = mp.solutions.drawing_utils # Drawing utilities
@@ -27,6 +28,14 @@ def load_model():
     model.load_weights('action2.h5')
 
     return model
+
+def say(text):
+    engine.say(text)
+    engine.runAndWait()
+    
+def say_in_thread(text):
+    thread = threading.Thread(target=say, args=(text,))
+    thread.start()
 
 def show_window():
     print("here")
@@ -80,8 +89,7 @@ def show_window():
 
                 # Speak the new action only once
                 if speak_flag:
-                    engine.say(sentence[-1])
-                    engine.runAndWait()
+                    say_in_thread(sentence[-1])
                     speak_flag = False
 
                 # Viz probabilities
@@ -99,5 +107,3 @@ def show_window():
                 break
         cap.release()
         cv2.destroyAllWindows()
-
-show_window()

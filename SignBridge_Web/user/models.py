@@ -1,7 +1,10 @@
 from flask import  jsonify, redirect, request, session
 from passlib.hash import pbkdf2_sha256
-from app import db
 import uuid
+import pymongo
+
+client = pymongo.MongoClient("localhost", 27017)
+db = client.user_login_system
 
 class User:
     def start_session(self, user):
