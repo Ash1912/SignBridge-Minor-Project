@@ -1,12 +1,10 @@
-import os
-import numpy as np
-import pandas as pd
+from user.models import User
+from utils import show_window
 import pymongo
 from flask import Flask, redirect, render_template, request, session
 from datetime import timedelta
 from functools import wraps
 from flask import Flask, render_template
-# from utils import show_window
 
 
 #### Defining Flask App
@@ -54,4 +52,22 @@ def show_model():
     # show_window()
     return "showing window"
 
-app.run(debug=True, port=8080)
+@app.route('/user/signup', methods=['POST'])
+def signup():
+    user = User()
+    return user.signup()
+
+# @app.route('/user/signout')
+# def signout():
+#     return User().signout()
+
+@app.route('/user/login', methods=['POST'])
+def login():
+    show_window()
+    x = User().login()
+    print(x)
+    return x
+
+
+if __name__ == "__main__":
+    app.run(debug=True, port=8080)
