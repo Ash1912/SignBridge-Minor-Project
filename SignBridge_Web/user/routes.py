@@ -13,6 +13,10 @@ from utils import show_window
 
 # @app.route('/user/login', methods=['POST'])
 # def login():
+<<<<<<< HEAD
+#     return User().login()
+=======
 #     x = User().login()
 #     print(x)
 #     return x
+>>>>>>> fe60e39f95419d7a7f64fa63ccd2f0d8ff46b4ec

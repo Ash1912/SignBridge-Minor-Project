@@ -5,6 +5,11 @@ from flask import Flask, redirect, render_template, request, session
 from datetime import timedelta
 from functools import wraps
 from flask import Flask, render_template
+<<<<<<< HEAD
+from user.models import User
+from utils import show_window
+=======
+>>>>>>> fe60e39f95419d7a7f64fa63ccd2f0d8ff46b4ec
 
 
 #### Defining Flask App
@@ -26,7 +31,7 @@ def login_required(f):
         if 'logged_in' in session:
             return f(*args, **kwargs)
         else:
-            return redirect('/authenticate/')
+            return redirect('/authenticate')
 
     return wrap
 
@@ -47,11 +52,24 @@ def home():
 def authenticate():
     return render_template('authentication.html')
 
+@app.route('/user/signup', methods=['POST'])
+def signup():
+    user = User()
+    return user.signup()
+
+@app.route('/user/login', methods=['POST'])
+def login():
+    x = User().login()
+    return x
+
 @app.route('/show_model')
 def show_model():
-    # show_window()
-    return "showing window"
+    show_window()
+    return redirect('/authenticate')
 
+<<<<<<< HEAD
+if __name__ == '__main__':
+=======
 @app.route('/user/signup', methods=['POST'])
 def signup():
     user = User()
@@ -70,4 +88,5 @@ def login():
 
 
 if __name__ == "__main__":
+>>>>>>> fe60e39f95419d7a7f64fa63ccd2f0d8ff46b4ec
     app.run(debug=True, port=8080)
