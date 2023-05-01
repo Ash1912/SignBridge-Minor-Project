@@ -1,5 +1,6 @@
 from app import app
 from user.models import User
+from utils import show_window
 
 @app.route('/user/signup', methods=['POST'])
 def signup():

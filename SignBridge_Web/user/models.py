@@ -4,7 +4,6 @@ from app import db
 import uuid
 
 class User:
-
     def start_session(self, user):
         del user['password']
         session['logged_in'] = True

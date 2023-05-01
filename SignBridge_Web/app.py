@@ -6,6 +6,7 @@ from flask import Flask, redirect, render_template, request, session
 from datetime import timedelta
 from functools import wraps
 from flask import Flask, render_template
+# from utils import show_window
 
 
 #### Defining Flask App
@@ -48,5 +49,9 @@ def home():
 def authenticate():
     return render_template('authentication.html')
 
-if __name__ == '__main__':
-    app.run(debug=True)
+@app.route('/show_model')
+def show_model():
+    # show_window()
+    return "showing window"
+
+app.run(debug=True, port=8080)
