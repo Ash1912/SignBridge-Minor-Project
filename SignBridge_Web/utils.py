@@ -32,18 +32,13 @@ def load_model():
 def say(text):
     engine.say(text)
     engine.runAndWait()
-<<<<<<< HEAD
 
 def say_threads(text):
-=======
-    
-def say_in_thread(text):
->>>>>>> fe60e39f95419d7a7f64fa63ccd2f0d8ff46b4ec
     thread = threading.Thread(target=say, args=(text,))
     thread.start()
 
 def show_window():
-    print("here")
+    print("loading model...")
     sequence = []
     sentence = []
     predictions = []
@@ -94,11 +89,7 @@ def show_window():
 
                 # Speak the new action only once
                 if speak_flag:
-<<<<<<< HEAD
                     say_threads(sentence[-1])
-=======
-                    say_in_thread(sentence[-1])
->>>>>>> fe60e39f95419d7a7f64fa63ccd2f0d8ff46b4ec
                     speak_flag = False
 
                 # Viz probabilities
@@ -112,7 +103,7 @@ def show_window():
             cv2.imshow('OpenCV Feed', image)
 
             # Break gracefully
-            if cv2.waitKey(10) & 0xFF == ord('q'):
+            if (cv2.waitKey(10) & 0xFF == ord('q')) or cv2.waitKey(10) & 0xFF == ord('Q'):
                 break
         cap.release()
         cv2.destroyAllWindows()
