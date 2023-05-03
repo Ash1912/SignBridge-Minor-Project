@@ -1,20 +1,21 @@
-import cv2
-import numpy as np
-import os
-from matplotlib import pyplot as plt
-import time
-import mediapipe as mp
-import pyttsx3
+import cv2 #OpenCV library for computer vision
+import numpy as np #Numerical computing library for Python
+import os #Provides a way of using operating system dependent functionality
+from matplotlib import pyplot as plt #Data visualization library
+import time    #Provides various time-related functions
+import mediapipe as mp #Medipipe shows the moment
+import pyttsx3 #text-to-speech conversion
 from mediapipe_utils import *
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import LSTM, Dense
-from tensorflow.keras.callbacks import TensorBoard
-import threading
+from tensorflow.keras.models import Sequential #A class from Keras API for creating neural network models in a sequential manner
+#Long Short-Term Memory layer for Keras API
+from tensorflow.keras.layers import LSTM, Dense #A regular densely connected neural network layer for Keras API
+from tensorflow.keras.callbacks import TensorBoard #A visualization toolkit for TensorFlow library
+import threading #A module provides a way of creating multiple threads of execution
 
 mp_holistic = mp.solutions.holistic # Holistic model
 mp_drawing = mp.solutions.drawing_utils # Drawing utilities
-actions = np.array(['hello', 'thanks', 'i love you'])
-engine = pyttsx3.init()
+actions = np.array(['hello', 'thanks', 'surprise'])
+engine = pyttsx3.init() #An instance of pyttsx3.init() to initialize text-to-speech engine
 
 
 def load_model():
@@ -100,7 +101,7 @@ def show_window():
                         cv2.FONT_HERSHEY_SIMPLEX, 1, (55, 11, 11), 2, cv2.LINE_AA)
 
             # Show to screen
-            cv2.imshow('OpenCV Feed', image)
+            cv2.imshow('Sign Bridge', image)
 
             # Break gracefully
             if (cv2.waitKey(10) & 0xFF == ord('q')) or cv2.waitKey(10) & 0xFF == ord('Q'):

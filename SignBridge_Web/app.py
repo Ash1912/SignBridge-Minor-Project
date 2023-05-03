@@ -1,5 +1,3 @@
-from user.models import User
-from utils import show_window
 import pymongo
 from flask import Flask, redirect, render_template, request, session
 from datetime import timedelta
