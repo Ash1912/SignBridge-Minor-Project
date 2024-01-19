@@ -1,0 +1,5 @@
+Steps :
+1: Open Anaconda Prompt.
+2: Change the directory. For e.g. K:
+3: Verify whether you are in the correct directory or not ?
+4: If the directory is correct then run the command python app.py
